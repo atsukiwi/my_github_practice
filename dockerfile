@@ -23,7 +23,8 @@ COPY src/ /app/src
 COPY tests/ /app/tests
 COPY requirements.txt /app
 COPY setup.py /app
-COPY results/ /app/
+# 結果を格納するフォルダを作成
+RUN mkdir results
 
 RUN pip install -r requirements.txt
 # テストコードで使用するために、ライブラリとして登録
