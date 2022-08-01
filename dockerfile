@@ -19,12 +19,12 @@ RUN echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 RUN pyenv install -v 3.7.6 && pyenv global 3.7.6 && pip install awscli 
 
 # # ソースコードをコピー
-# COPY src/ /app/src
-# COPY tests/ /app/tests
+COPY src/ /app/src
+COPY tests/ /app/tests
 COPY requirements.txt /app
-# COPY setup.py /app
-# 結果を格納するフォルダを作成
-RUN mkdir results
+COPY setup.py /app
+# # 結果を格納するフォルダを作成
+# RUN mkdir results
 
 RUN pip install -r requirements.txt
 # テストコードで使用するために、ライブラリとして登録

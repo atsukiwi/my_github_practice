@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="1" hostname="440e30c064e0" name="pytest" skipped="0" tests="5" time="0.035" timestamp="2022-08-01T15:22:55.084440"><testcase classname="tests.unit.test_unit" name="test_unit_hoge[1]" time="0.001" /><testcase classname="tests.unit.test_unit" name="test_unit_hoge[2]" time="0.000" /><testcase classname="tests.unit.test_unit" name="test_unit_hoge[3]" time="0.000" /><testcase classname="tests.unit.test_unit" name="test_unit_fuga[a]" time="0.000" /><testcase classname="tests.unit.test_unit" name="test_unit_fuga[1]" time="0.000"><failure message="TypeError: unsupported operand type(s) for +: 'int' and 'str'">a = 1
+
+    @pytest.mark.parametrize("a",["a", 1])
+    def test_unit_fuga(a):
+        a_expected = str(a) + "_OUTPUT"
+&gt;       a_result = task0.func_fuga(a)
+
+tests/unit/test_unit.py:13: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+a = 1
+
+    def func_fuga(a: str) -&gt; str:
+&gt;       return a + "_OUTPUT"
+E       TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+/usr/local/pyenv/versions/3.7.6/lib/python3.7/site-packages/tasks/task0.py:5: TypeError</failure></testcase></testsuite></testsuites>

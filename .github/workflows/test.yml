@@ -15,8 +15,8 @@ jobs:
         shell: bash
         run: |
           docker image build -t my_github_practice .
-          docker container run --name my_github_practice_container -v /$(pwd):/app -t my_github_practice bash 
-          docker exec my_github_practice_container pytest -v --junitxml="results/python_test_job.xml"
+          docker container run --name my_github_practice_container -v tests/results:/app/tests/results -t my_github_practice bash 
+          docker exec my_github_practice_container pytest -v --junitxml="/app/tests/results/python_test_job.xml"
         continue-on-error: true
 
       # テスト結果の表示
@@ -25,7 +25,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Unit Test Results
-          path: results/*.xml
+          path: /app/tests/results/*.xml
 
       - name: Download Artifacts
         if: success() || failure()
