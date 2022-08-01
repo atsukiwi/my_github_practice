@@ -15,7 +15,7 @@ jobs:
         shell: bash
         run: |
           docker image build -t my_github_practice .
-          docker container run --name my_github_practice_container -it my_github_practice bash 
+          docker container run --name my_github_practice_container -i my_github_practice bash 
           docker exec my_github_practice_container pytest -v --junitxml="results/python_test_job.xml"
         continue-on-error: true
 
