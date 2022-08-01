@@ -23,6 +23,7 @@ COPY src/ /app/src
 COPY tests/ /app/tests
 COPY requirements.txt /app
 COPY setup.py /app
+COPY results/ /app/
 
 RUN pip install -r requirements.txt
 # テストコードで使用するために、ライブラリとして登録
