@@ -14,8 +14,7 @@ jobs:
         id: check_something
         shell: bash
         run: |
-          echo $(pwd)
-          docker image build -t my_github_practice .
+          docker image build -q -t my_github_practice .
           docker container run --name my_github_practice_container -v $(pwd)/tests/results:/app/tests/results -t my_github_practice pytest -v --junitxml="/app/tests/results/python_test_job.xml"
         continue-on-error: true
 
@@ -25,7 +24,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Unit Test Results
-          path: /app/tests/results/*.xml
+          path: tests/results/*.xml
 
       - name: Download Artifacts
         if: success() || failure()
