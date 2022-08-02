@@ -30,6 +30,6 @@ RUN pip install -r requirements.txt
 # テストコードで使用するために、ライブラリとして登録
 RUN pip install .
 
-EXPOSE 80
+# EXPOSE 80
 
 #CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "80"]
