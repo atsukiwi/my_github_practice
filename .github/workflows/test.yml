@@ -15,7 +15,7 @@ jobs:
         shell: bash
         run: |
           docker image build -q -t my_github_practice .
-          docker container run --name my_github_practice_container -v $(pwd)/tests/results:/app/tests/results -t my_github_practice pytest -v --cov --junitxml="/app/tests/results/python_test_job.xml"
+          docker container run --name my_github_practice_container -v $(pwd)/tests/results:/app/tests/results -t my_github_practice pytest -v --cov . --junitxml="/app/tests/results/python_test_job.xml"
         continue-on-error: true
 
       # テスト結果の表示
