@@ -5,7 +5,9 @@ WORKDIR /app
 
 SHELL ["/bin/bash", "-c"]
 RUN yum update -y
-RUN yum install -y gcc bzip2 bzip2-devel openssl openssl-devel readline readline-devel git libffi-devel wget gcc-c++ unixODBC-devel tar.x86_64 yum-utils python-devel mysql-devel python3-devel libsqlite3-dev sqlite3
+RUN yum install -y gcc bzip2 bzip2-devel openssl openssl-devel readline readline-devel git \ 
+    libffi-devel wget gcc-c++ unixODBC-devel tar.x86_64 yum-utils python-devel mysql-devel \ 
+    python3-devel sqlite-devel zlib-devel
 
 RUN echo 'export PYENV_ROOT="/usr/local/pyenv"' | tee -a /etc/profile.d/pyenv.sh
 RUN echo 'export PATH="${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:${PATH}"' | tee -a /etc/profile.d/pyenv.sh
@@ -16,7 +18,7 @@ RUN git clone https://github.com/pyenv/pyenv.git /usr/local/pyenv
 ENV PYENV_ROOT "/usr/local/pyenv"
 ENV PATH "${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:${PATH}"
 RUN echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-RUN pyenv install -v 3.7.6 && pyenv global 3.7.6 && pip install awscli 
+RUN pyenv install -v 3.8.13 && pyenv global 3.8.13 && pip install awscli 
 
 # # ソースコードをコピー
 COPY src/ /app/src
