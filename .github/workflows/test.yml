@@ -37,10 +37,12 @@ jobs:
         with:
           files: artifacts/**/*xml
 
-      - name: upload coverage
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+      # - name: upload coverage
+      #   uses: codecov/codecov-action@v1
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
 
       - name : something when command success
         if: steps.check_something.outcome == 'success' #  - name: testの箇所が成功したか失敗したかで処理を変える
