@@ -17,14 +17,14 @@ jobs:
           docker image build -q -t my_github_practice .
           docker container run --name my_github_practice_container -v $(pwd)/tests/results:/app/tests/results \
           -t my_github_practice pytest -v --cov --cov-report xml:/app/tests/results/coverage.xml --junitxml="/app/tests/results/python_test_job.xml"
-          cat /app/tests/results/coverage.xml
+          cat $(pwd)/tests/results
         continue-on-error: true
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: /app/tests/results/coverage.xml
+          files: $(pwd)/tests/results
 
       # テスト結果の表示
       - name: Upload Unit Test Results
