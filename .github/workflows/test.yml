@@ -19,6 +19,12 @@ jobs:
           -t my_github_practice pytest -v --cov --cov-report xml:/home/runner/coverage.xml --junitxml="/app/tests/results/python_test_job.xml"
         continue-on-error: true
 
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: /home/runner/coverage.xml
+
       # テスト結果の表示
       - name: Upload Unit Test Results
         if: ${{ always() }}
@@ -37,16 +43,6 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v1
         with:
           files: artifacts/**/*xml
-
-      # - name: upload coverage
-      #   uses: codecov/codecov-action@v1
-      #   with:
-      #     token: ${{ secrets.CODECOV_TOKEN }}
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: /home/runner/coverage.xml
 
       - name : something when command success
         if: steps.check_something.outcome == 'success' #  - name: testの箇所が成功したか失敗したかで処理を変える
