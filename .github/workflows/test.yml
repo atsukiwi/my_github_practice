@@ -16,7 +16,7 @@ jobs:
         run: |
           docker image build -q -t my_github_practice .
           docker container run --name my_github_practice_container -v $(pwd)/tests/results:/app/tests/results \
-          -t my_github_practice pytest -v --cov --cov-report xml:/app/tests/results/coverage.xml --junitxml="/app/tests/results/python_test_job.xml"
+          -t my_github_practice pytest -v --cov=src --cov-report xml:/app/tests/results/coverage.xml --junitxml="/app/tests/results/python_test_job.xml"
           cat $(pwd)/tests/results/coverage.xml
         continue-on-error: true
 
