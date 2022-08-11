@@ -20,6 +20,7 @@ jobs:
         continue-on-error: true
 
       - name: Upload coverage to Codecov
+        if: success() || failure()
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
