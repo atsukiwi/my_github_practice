@@ -6,3 +6,5 @@
     - 1
 - feature/piyoブランチの作成
     - 0
+- feature/fugaブランチの作成
+    - 0
