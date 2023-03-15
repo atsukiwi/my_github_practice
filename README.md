@@ -3,6 +3,6 @@
 ## 作業内容
 - developブランチの作成
 - feature/hogeブランチの作成
-    - 0
+    - 1
 - feature/piyoブランチの作成
     - 0
