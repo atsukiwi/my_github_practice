@@ -1,6 +1,7 @@
 venv/
 .pytest_cache/
 tests/results/
+tasks.egg-info/
 
 *.pyc
 
